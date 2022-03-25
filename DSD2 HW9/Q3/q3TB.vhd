@@ -13,7 +13,7 @@ architecture tb of q3TB is
 	signal b 	: std_logic;
 	signal c 	: std_logic;
 	signal y 	: std_logic;
-	file vector_file : text open read_mode is "text.txt";
+	file vector_file : text open read_mode is "test.txt";
 begin
 	uut: entity work.q3logic
 		port map (
@@ -28,7 +28,7 @@ begin
 		variable v_a_in : std_logic;
 		variable v_b_in : std_logic;
 		variable v_c_in : std_logic;
-		variable v_y_in : std_logic;
+		variable v_y_out : std_logic;
 	begin
 		test : while (not endfile(vector_file)) loop
 		-- ADD: read a line from the vector file
