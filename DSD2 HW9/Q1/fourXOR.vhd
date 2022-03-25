@@ -16,7 +16,7 @@ use ieee.numeric_std.all;
 entity fourXor is
 	port (
 				a : in std_logic_vector(3 downto 0);
-				y : out std_logic;
+				y : out std_logic
 			);	
 end entity fourXor;
 

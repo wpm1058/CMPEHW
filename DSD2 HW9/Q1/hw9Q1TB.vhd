@@ -11,7 +11,7 @@ end entity hw9Q1TB;
 architecture bench of hw9Q1TB is
 	signal a: std_logic_vector(3 downto 0);
 	signal y: std_logic;
-	file vector_file : text open READ_MODE is "text.txt";
+	file vector_file : text open read_mode is "test.txt";
 begin
 	uut: entity work.fourXOR 
 	port map (
@@ -36,7 +36,8 @@ begin
 		-- ADD: read v_y_out, the expected output
 			read(vector_line,v_y_out,good =>vector_valid);
 			assert (y = v_y_out) report "error in operation at "
-			& time'image(now) " a = " & to_hstring(a) & " and y = "
+			& time'image(now) & " a = " 
+			& to_hstring(a) & " and y = "
 			& std_logic'image(y);
 			wait for 10 ns;
 		end loop;
