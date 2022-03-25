@@ -1,0 +1,5 @@
+#Format of text.txt is
+#a y where y is a 4 input xor
+0000 0
+0001 1
+0010 1
