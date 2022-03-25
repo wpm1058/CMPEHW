@@ -1,0 +1,5 @@
+#Format of test.txt is
+#input abcdefg
+0000 1111110
+0001 0110000
+0002 1100101
