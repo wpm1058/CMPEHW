@@ -20,8 +20,8 @@ begin
 	uut: entity work.Q3 port map (
 		clk => clk, rst => rst, Q => Q
 	);
-	
-	stimulus : process (reset, clock)
+	clk <= not clk after clk_period/2;
+	stimulus : process
 	begin
 		rst <= '1';
 		wait for clk_period;
@@ -36,5 +36,4 @@ begin
 		end loop;
 		wait;
 	end process stimulus;
-
 end architecture tb;
