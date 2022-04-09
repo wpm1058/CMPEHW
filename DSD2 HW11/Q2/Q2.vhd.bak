@@ -14,18 +14,18 @@ architecture Q2_arc of Q2 is
 	signal cur_state, nxt_state : state;
 begin
 	-- default state
-	state_proc : process (rst, clk) is begin
-		if (rising_edge(clk)) then
-	  		if (rst = '1') then
-				cur_state <= S0;	 
-	  		else
-				cur_state <= nxt_state;
-			end if;
+	default : process (rst, clk)
+	begin
+	  	if (rst = '1') then
+			cur_state <= S0;	 
+	  	elsif (rising_edge(clock)) then
+			cur_state <= nxt_state;
 	  	end if;
-	end process state_proc;
+	end process default;
 
 	--nxt state logic
-	next_state_proc : process (cur_state, A, B) is begin
+	nextState : process (rst, clk, A, B,)
+	begin
 		case(cur_state) is
 			when S0 => 
 				if (A = '1') then
@@ -44,7 +44,7 @@ begin
 			when others =>
 				nxt_state <= S0;
 		end case;
-	end process next_state_proc;
+	end process nextState;
 
 	-- output logic
 	output : process (rst, clk, A, B)

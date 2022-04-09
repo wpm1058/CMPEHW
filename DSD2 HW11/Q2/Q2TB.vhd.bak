@@ -25,7 +25,7 @@ begin
 
 		impure function rand_slv(len : integer) return std_logic_vector is 
 			variable rand : real;
-			variable slv : std_logic_vector(len-1 downto 0);
+			variable slv : std_logic_vector(1 downto 0);
 	begin
 		for i in slv'range loop
 			uniform(seed1, seed2, rand);
