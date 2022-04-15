@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity E212TB is
 end E212TB;
@@ -35,16 +36,17 @@ begin
 		g2n <= '0';
 		for i in 0 to 7 loop
 		 	CBAsel <= std_logic_vector(to_unsigned(i, 3));
-		 	expected_y := '0';
-		 	wait for y = expected_y report "i = " & to_hstring(i) & "error";
-		 	report "y = " & to_hstring(y(7)) & to_hstring(y(6)) & to_hstring(y(5))
-		 	& to_hstring(y(4)) & to_hstring(y(3)) & to_hstring(y(2)) & to_hstring(y(1))
-		 	& to_hstring(y(0));
+		 	expected_y := "11111111";
+		 	expected_y(i) := '0';
+		 	wait for 10 ns;
+		 	assert y = expected_y report "i = " & integer'image(i) & "error";
+		 	report "y = " & to_hstring(y);
 		 	wait for 10 ns;
 		end loop; 
 		expected_y := "11111111";
 		g1 <= '1'; 
 		g2n <= '1';
+		wait for 10 ns;
 		assert (y = expected_y) report "enable g1 high, g2n high error";
 		wait;
 	end process stimulus;
